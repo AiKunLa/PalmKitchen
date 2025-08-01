@@ -15,7 +15,7 @@
 
 ## 配置
 1. 依赖配置
-    pnpm i react-router-dom zustand axios react react-dom react-vant
+    pnpm i react-router-dom zustand axios react react-dom react-vant @react-vant/icons
     pnpm i vite-plugin-mock -D 开发阶段
     pnpm i lib-flexible  解决移动端适配 等分屏幕
     pnpm i -D postcss postcss-pxtorem  解决px 转换为rem
@@ -64,6 +64,42 @@
         ```js
         import 'lib-flexible'
         ```
-    
+    - 配置 index.css 
+        - 避免文字换行异常
+        - 防止意外的光标显示
+        - 仅在实际输入框中显示光标
+            ```css
+            /* 防止意外的光标显示 */
+            * {
+            caret-color: transparent !important;
+            }
+            /* 仅在实际输入框中显示光标 */
+            input, textarea {
+            caret-color: auto !important;
+            }
+            ```
+
 5. 在index.html中修改项目标题
      <title>掌上厨房</title>
+
+## 功能模块
+1. 路由搭建
+    - MainLayout
+        Outlet
+            Home 首页  /home
+            Shop 店铺  /shop
+            Camera 拍照查询菜品  /camera
+            Collection 收藏  /collection
+            Account 账号  /account
+        Tabbar 导航栏
+    - BlankLayout
+        Login 登录
+            /login
+        Register 注册
+            /register
+        RecipeDetail 菜谱详情
+            /recipe/detail
+        ProductDetail 商品详情
+            /product/detail
+        Search 搜索
+            /search
