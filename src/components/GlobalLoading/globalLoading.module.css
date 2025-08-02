@@ -1,4 +1,5 @@
 .wrapper {
+    /* 固定定位占满全屏 */
     position: fixed;
     left: 0;
     right: 0;

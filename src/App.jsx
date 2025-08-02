@@ -7,6 +7,12 @@ import GlobalLoading from "@/components/GlobalLoading";
 
 // 带有tabbar的Layout
 const Home = lazy(() => import("@/pages/home"));
+// Home
+const Recommend = lazy(() => import("@/components/Home/Recommend"));
+const Follow = lazy(() => import("@/components/Home/Follow"));
+const Weightloss = lazy(() => import("@/components/Home/Weightloss"));
+const Category = lazy(() => import("@/components/Home/Category"));
+
 const Shop = lazy(() => import("@/pages/shop"));
 const Camera = lazy(() => import("@/pages/camera"));
 const Collection = lazy(() => import("@/pages/collection"));
@@ -26,8 +32,16 @@ function App() {
         <Routes>
           {/* 重定向到home */}
           <Route path="/" element={<Navigate to="/home" replace />} />
+
           <Route element={<MainLayout />}>
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Home />}>
+              {/* 正确的嵌套路由配置 - 使用index路由作为默认值 */}
+              <Route index element={<Recommend />} />
+              <Route path="follow" element={<Follow />} />
+              <Route path="weightloss" element={<Weightloss />} />
+              <Route path="category" element={<Category />} />
+            </Route>
+
             <Route path="/shop" element={<Shop />} />
             <Route path="/camera" element={<Camera />} />
             <Route path="/collection" element={<Collection />} />

@@ -1,0 +1,14 @@
+.recipeCard{
+    margin-bottom: 5px ;
+    background-color: rgba(255, 255, 255, 0.8)
+}
+
+.cover {
+    height: 465px;
+}
+
+.cover img {
+    border-radius: 20px;
+    /* 图片居中 */
+    object-fit: cover;
+}

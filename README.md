@@ -103,3 +103,16 @@
             /product/detail
         Search 搜索
             /search
+
+
+2. 首页
+    - 搜索框
+        点击搜索框进入搜索界面
+    - 首页内部路由
+        - Follow 关注
+        - Recommend 推荐
+            推荐菜谱
+        - Weightloss 减脂
+        - Category 分类
+    - 使用 IntersectionObserver 封装自定义hooks 实现加载更多菜谱并实现图片懒加载
+

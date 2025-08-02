@@ -30,13 +30,13 @@ export default function MainLayout() {
       <div className="flex-1">
         <Outlet />
       </div>
-      <Tabbar
+      <Tabbar activeColor='#f44336' inactiveColor='#000'
         value={active}
         onChange={(index) => {
           setActive(index);
           navigate(tabs[index].path);
         }}
-        style={{ borderTop: '1px solid #eee'}}
+        style={{ position: 'fixed', bottom: 0 }}
       >
         {tabs.map((tab, index) => (
           <Tabbar.Item key={index} icon={tab.icon}>
