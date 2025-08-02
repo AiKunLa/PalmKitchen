@@ -7,43 +7,6 @@
     z-index: 100;
 }
 
-.topNav {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  background-color: #fff;
-  /* border-bottom: 1px solid #eee; */
-}
-
-
-
-.menuIcon {
-  margin-right: 15px;
-  margin-left: 10px;
-  color: #333;
-    width: 40px;
-  height: 40px;
-}
-.searchContainer {
-  flex: 1;
-  position: relative;
-  z-index: 1;
-}
-
-.searchBar {
-  width: 100%;
-}
-
-
-
-.bellIcon {
-  margin-right: 10px;
-  margin-left: 15px;
-  color: #333;
-    width: 40px;
-  height: 40px;
-}
-
 .categoryBar {
   background-color: #fff;
   padding: 10px 0;

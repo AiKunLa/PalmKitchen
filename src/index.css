@@ -95,6 +95,6 @@ textarea {
 }
 
 /* 仅在实际输入框中显示光标 */
-/* input, textarea {
+input, textarea {
   caret-color: auto !important;
-} */
+}

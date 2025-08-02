@@ -116,3 +116,23 @@
         - Category 分类
     - 使用 IntersectionObserver 封装自定义hooks 实现加载更多菜谱并实现图片懒加载
 
+3. chat Ai聊天
+    - 创建 useChatStore 来管理聊天状态 ， 通过 chat.js 中封装的方法来实现获取AI的回复
+    - 搜索框使用之前的组件 
+    - 聊天区域
+        使用Flexbox 实现了消息的对齐方式和排列方向，并使用不同的样式区分了AI和用户消息的视觉呈现
+        使用 ReactMarkdown 来渲染AI的回复，使回复呈现更好的效果
+        使用 react-vant 中的 Loading 组件来显示加载中的效果，加载完毕后替换为实际的回复内容
+            ```jsx
+            {message.isAI && message.content === "" ? (
+                <Loading size="24px">加载中...</Loading>
+            ) : (
+                <ReactMarkdown>{message.content}</ReactMarkdown>
+            )}
+            ```
+    - 输入区域
+        - 输入框
+            使用受控组件的方式来管理输入框的状态
+        - 发送按钮
+            点击发送按钮后，调用useChatStore 中的sendMessage方法来发送消息，并设置loading状态
+            清空输入框的内容并在没有加载完成时禁用发送按钮

@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import { useNavigate } from "react-router-dom";
 import styles from "./home.module.css";
 import useTitle from "@/hooks/useTitle";
 import { Outlet } from "react-router-dom";

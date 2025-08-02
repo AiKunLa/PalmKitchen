@@ -1,8 +1,8 @@
-import { Search, Tabs } from "react-vant";
-import { WapNav, ChatO } from "@react-vant/icons";
+import { Tabs } from "react-vant";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./header.module.css";
 import { useState, useEffect } from "react";
+import TopSearch from "@/components/TopSearch";
 
 const tabs = [
   { title: "关注", path: "/home/follow" },
@@ -29,32 +29,10 @@ export default function Header() {
     }
   }, [location.pathname]);
 
-  const handleSearchClick = () => {
-    navigate("/search");
-  };
-
-  const handleMenuClick = (e) => {
-    // e.stopPropagation();
-  };
-
-  const handleMsgClick = (e) => {
-    // e.stopPropagation();
-  };
 
   return (
     <div className={styles.header}>
-      <div className={styles.topNav}>
-        <WapNav className={styles.menuIcon} onClick={handleMenuClick} />
-        <div className={styles.searchContainer} onClick={handleSearchClick}>
-          <Search
-            className={styles.searchBar}
-            placeholder="搜索菜谱"
-            shape="round"
-          />
-        </div>
-        <ChatO className={styles.bellIcon} onClick={handleMsgClick} />
-      </div>
-
+      <TopSearch />
       {/* 分类标签栏 */}
       <div className={styles.categoryBar}>
         <Tabs
@@ -65,7 +43,7 @@ export default function Header() {
           }}
         >
           {tabs.map((item, index) => (
-            <Tabs.TabPane key={item.path} title={item.title} />
+            <Tabs.TabPane key={index} title={item.title} />
           ))}
         </Tabs>
       </div>
