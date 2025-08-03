@@ -15,7 +15,7 @@ const getRecipes = (page, pageSize = 8) => {
   }));
 };
 
-export default [
+export const home = [
   {
     url: "/api/getRecipes",
     method: "get",
