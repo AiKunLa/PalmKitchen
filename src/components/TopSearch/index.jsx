@@ -3,8 +3,7 @@ import { WapNav, ChatO } from "@react-vant/icons";
 import { Search } from "react-vant";
 import { useNavigate } from "react-router-dom";
 
-export default function TopSearch() {
-
+export default function TopSearch({ type = 1 }) {
   const navigate = useNavigate();
 
   const handleSearchClick = () => {
@@ -30,7 +29,11 @@ export default function TopSearch() {
             shape="round"
           />
         </div>
-        <ChatO className={styles.bellIcon} onClick={handleMsgClick} />
+        {type === 3 ? (
+          ""
+        ) : (
+          <ChatO className={styles.bellIcon} onClick={handleMsgClick} />
+        )}
       </div>
     </>
   );
