@@ -1,0 +1,288 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.header {
+  /* 透明度 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.content {
+  flex: 1;
+  padding: 0 20px;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-bottom: 100px;
+}
+
+/* 菜谱图片样式 */
+
+.imageContainer {
+    height: 560px;  
+    margin-bottom: 40px;
+}
+
+.recipeImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 16px;
+}
+
+/* 标题和评分区域 */
+.titleSection {
+  margin-bottom:60px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.ratingSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.ratingValue {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ff6b00;
+  margin-right: 8px;
+}
+
+.ratingleft {
+  display: flex;
+  align-items: center;
+}
+
+.ratingright {
+    height: 100%;
+    flex: 1;
+    padding: 10px 0 10px 60px;
+}
+
+
+.ratingProgress {
+    margin: 20px 0;
+    align-items: center;
+    width: 100%;
+
+}
+
+.ratingProgress > :first-child span:nth-of-type(2) {
+    display: none;
+}
+
+
+
+.starRating {
+  display: flex;
+  margin-right: 8px;
+}
+
+.star {
+  color: #ffc107;
+  margin-right: 2px;
+}
+
+.reviewCount {
+  color: #888;
+  font-size: 24px;
+}
+
+/* 作者信息 */
+.authorSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+}
+
+.authorAvatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.authorInfo {
+  flex: 1;
+  font-size: 32px;
+}
+
+.authorName {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.followButton {
+  background-color: #ff6b00;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* 描述区域 */
+.description {
+  font-size: 32px;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+/* 选项卡样式 */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 16px;
+}
+
+.tab {
+  padding: 10px 16px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+  color: #ff6b00;
+  border-bottom: 2px solid #ff6b00;
+}
+
+/* 用料部分 */
+.ingredientsTitle {
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.ingredientsList {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.ingredientItem {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 8px;
+  /* 虚线 */
+  border-bottom: 2px dashed #d8d6d6;
+}
+
+.ingredientName {
+  /* font-weight: 500; */
+}
+
+.ingredientAmount {
+  color: #888;
+}
+
+/* 评论部分 */
+.commentsTitle {
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.commentItem {
+  padding: 12px 0;
+  /* border-bottom: 1px solid #eee; */
+}
+
+.commentHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.commentAvatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.commentInfo {
+  flex: 1;
+  color: rgb(190, 190, 190);
+}
+
+.commentUsername {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.commentDate {
+  color: #888;
+  font-size: 24px;
+}
+
+.commentContent {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  padding-left: 84px;
+}
+
+.commentFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  color: #888;
+  font-size: 14px;
+}
+
+.likeButton {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+}
+
+/* 底部工具栏 */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: 1px solid #eee;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.toolButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toolButtonText {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.toolButton.active {
+  color: #ff6b00;
+}

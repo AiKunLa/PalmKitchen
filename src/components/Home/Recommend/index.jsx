@@ -1,26 +1,29 @@
 import { useHomeStore } from "@/store/useHomeStore";
-import { useIntersectObs } from "@/hooks/useIntersectObs";
-import { Loading } from "react-vant";
 import styles from "./recommend.module.css";
 import RecipeCard from "@/components/RecipeCard";
+import { useNavigate } from "react-router-dom";
+import LoadingMore from "@/components/LoadingMore";
 
 /**
  * Home 页面中的推荐组件
- * @returns 
+ * @returns
  */
 export default function Recommend() {
   const { recipes, loading, fetchMoreRecipes } = useHomeStore();
-  const targetRef = useIntersectObs(fetchMoreRecipes);
+  const navigate = useNavigate();
+
+  const handleRecipeClick = (e) => {
+    const recipeId = e.target.dataset.recipeid;
+    navigate(`/recipe/detail/${recipeId}`);
+  };
   return (
     <>
-      <div className={styles.recipeGrid}>
+      <div onClick={handleRecipeClick} className={styles.recipeGrid}>
         {recipes.map((recipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
       </div>
-      <div ref={targetRef}>
-        {loading && <Loading type="spinner"  style={{ textAlign: "center" }} />}
-      </div>
+      <LoadingMore loadMore={fetchMoreRecipes} loading={loading} />
     </>
   );
 }

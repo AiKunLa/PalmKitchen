@@ -19,7 +19,7 @@ export default function RecipeCard({ recipe }) {
     <>
       <Card className={styles.recipeCard}>
         <Card.Cover className={styles.cover}>
-          <img ref={targetRef} src={image} />
+          <img ref={targetRef} src={image} data-recipeid={recipe.id} />
         </Card.Cover>
         <Card.Header extra={<Arrow />}>{recipe.title}</Card.Header>
         <Card.Body className={styles.body}>

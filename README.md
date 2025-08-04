@@ -150,3 +150,15 @@
         使用 grid 布局 实现新品商品展示
         使用 宽高 1:1 的自适应比例 实现统一的商品图片展示大小
         使用useIntersectObs hook 来实现图片懒加载
+
+7. 菜谱详情页面
+    - 使用事件委托的方式，来实现详情页的跳转
+        
+    - 创建TopDetail 组件
+        使用 flex 布局 完成标题和评分的布局
+        使用useIntersectObs hook 来实现图片懒加载
+    - 创建RecipeDetail 组件
+    - 将自定义hook useIntersectObs 与 用于定位的一组html元素 封装成一个组件。 
+        组件接收一个boolen 和 一个回调函数（用于发起请求） 作为参数
+        组件内部使用自定义hook useIntersectObs 来监听元素的可见性
+        当元素进入视口时，组件会触发回调函数

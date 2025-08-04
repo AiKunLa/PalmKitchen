@@ -17,17 +17,17 @@
   height: 40px;
 }
 .searchContainer {
+  display: flex;
   flex: 1;
+  height: 108px;
   position: relative;
   z-index: 1;
 }
 
+
 .searchBar {
   width: 100%;
 }
-
-
-
 .bellIcon {
   margin-right: 10px;
   margin-left: 15px;
