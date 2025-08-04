@@ -4,10 +4,11 @@
 }
 
 .cover {
-    height: 465px;
 }
 
 .cover img {
+    aspect-ratio: 3/4;
+
     border-radius: 20px;
     /* 图片居中 */
     object-fit: cover;

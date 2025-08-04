@@ -7,12 +7,14 @@ import styles from "./collectionRecipeCard.module.css";
 // 内部 RecipeCard 组件，按照图片布局定制
 
 const CollectionRecipeCard = memo(({ recipe }) => {
-  const [image, setImage] = useState('');
+   const [imageLoaded, setImageLoaded] = useState(false);
 
   const lazyLoadImg = useCallback(() => {
-    // setImage(recipe.image);
-    targetRef.current.src = targetRef.current.dataset.src;
-  }, []);
+    if (!imageLoaded && targetRef.current) {
+      targetRef.current.src = targetRef.current.dataset.src;
+      setImageLoaded(true);
+    }
+  }, [imageLoaded]);
 
   const targetRef = useIntersectObs(lazyLoadImg);
 

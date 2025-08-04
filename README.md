@@ -136,3 +136,17 @@
         - 发送按钮
             点击发送按钮后，调用useChatStore 中的sendMessage方法来发送消息，并设置loading状态
             清空输入框的内容并在没有加载完成时禁用发送按钮
+
+4. 个人中心页面
+    
+5. 收藏页面
+    - 创建CollectionRecipeCard 组件
+        使用 flex 布局 完成图片和文字的布局
+        使用memo 来优化组件的性能
+        使用useIntersectObs hook 来实现图片懒加载
+
+6. 店铺页面
+    - 创建ShopRecipeCard 组件
+        使用 grid 布局 实现新品商品展示
+        使用 宽高 1:1 的自适应比例 实现统一的商品图片展示大小
+        使用useIntersectObs hook 来实现图片懒加载

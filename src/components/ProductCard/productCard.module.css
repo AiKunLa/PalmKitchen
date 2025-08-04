@@ -1,0 +1,76 @@
+
+/* 商品卡片样式 */
+.productCard {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.productImage {
+  aspect-ratio: 1/1;
+  border-radius: 10%;
+  overflow: hidden;
+}
+
+.productImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* 商品信息 */
+
+.productInfo {
+  padding: 10px;
+}
+
+.productName {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 销售情况 */
+.productSales {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productPrice {
+  font-size: 26px;
+  color: #ff3333;
+  font-weight: bold;
+}
+
+.productOriginalPrice {
+  font-size: 20px;
+  color: #999;
+  text-decoration: line-through;
+  margin-left: 5px;
+}
+
+.productTag {
+  display: inline-block;
+  background-color: #fff0e6;
+  color: #ff9933;
+  font-size: 20px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.productSalesCount {
+    /* 在div的右边 */
+    margin-left: auto;
+}
+
+.productStatus {
+  font-size: 20px;
+  color: #999;
+  margin-top: 5px;
+}
