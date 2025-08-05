@@ -1,4 +1,3 @@
-import { Card, Image } from "react-vant";
 import { Arrow } from "@react-vant/icons";
 import useIntersectObs from "@/hooks/useIntersectObs";
 import { memo, useCallback, useState } from "react";
@@ -19,21 +18,21 @@ const CollectionRecipeCard = memo(({ recipe }) => {
   const targetRef = useIntersectObs(lazyLoadImg);
 
   return (
-    <Card className={styles.recipeCard}>
-      <Card.Cover className={styles.cover}>
+    <div className={styles.recipeCard} data-recipe-id={recipe.id}>
+      <div className={styles.cover}>
         <img ref={targetRef} data-src={recipe.image} src="/loading.gif" alt={recipe.title} />
-      </Card.Cover>
+      </div>
 
       <div className={styles.cardInfo}>
-        <Card.Header className={styles.cardHeader}>{recipe.title}</Card.Header>
-        <Card.Body className={styles.cardBody}>
+        <header className={styles.cardHeader}>{recipe.title}</header>
+        <div className={styles.cardBody}>
           <div className={styles.ratingInfo}>
             <span className={styles.rating}>{recipe.rating}</span>
             {/* <span className={styles.star}>★</span> */}
           </div>
           <span className={styles.cookedCount}>{recipe.cookedCount}人做过</span>
-        </Card.Body>
-        <Card.Footer className={styles.cardFooter}>
+        </div>
+        <footer className={styles.cardFooter}>
           <div className={styles.authorInfo}>
             <img
               className={styles.avatar}
@@ -42,9 +41,9 @@ const CollectionRecipeCard = memo(({ recipe }) => {
             />
             <span className={styles.author}>{recipe.author}</span>
           </div>
-        </Card.Footer>
+        </footer>
       </div>
-    </Card>
+    </div>
   );
 });
 

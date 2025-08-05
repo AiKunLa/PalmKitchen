@@ -23,7 +23,7 @@ const Login = lazy(() => import("@/pages/login"));
 const Register = lazy(() => import("@/pages/register"));
 const RecipeDetail = lazy(() => import("@/pages/recipeDetail"));
 const ProductDetail = lazy(() => import("@/pages/productDetail"));
-const Search = lazy(() => import("@/pages/search"));
+const SearchPage = lazy(() => import("@/pages/SearchPage"));
 
 function App() {
   return (
@@ -53,7 +53,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/recipe/detail/:id" element={<RecipeDetail />} />
             <Route path="/product/detail/:id" element={<ProductDetail />} />
-            <Route path="/search" element={<Search />} />
+            <Route path="/search" element={<SearchPage />} />
           </Route>
         </Routes>
       </Suspense>

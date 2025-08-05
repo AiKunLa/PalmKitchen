@@ -25,7 +25,7 @@ export default function Shop() {
     fetchNewProducts();
   }, []);
 
-  if(newProductsLoading) return <GlobalLoading />
+  // if(newProductsLoading) return <GlobalLoading />
 
   return (
     <div className={styles.container}>

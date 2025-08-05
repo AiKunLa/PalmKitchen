@@ -162,3 +162,18 @@
         组件接收一个boolen 和 一个回调函数（用于发起请求） 作为参数
         组件内部使用自定义hook useIntersectObs 来监听元素的可见性
         当元素进入视口时，组件会触发回调函数
+8. 搜索页面
+    - 创建SearchPage 组件
+        使用 display: inline-flex; 实现搜索历史和搜索建议的气泡布局
+        使用useSearchStore 来管理搜索状态
+            - 搜索建议
+            - 搜索历史
+            - 搜索结果
+        使用事件委托的方式 来实现搜索建议和搜索历史的点击事件，统一处理
+            在RecipeCard 上设置 data-recipe-id 属性，并回调函数中使用closest 方法 查找最近的带有data-recipe-id属性的祖先元素
+        创建RecipeList组件
+            - 该组件可以复用于搜索结果展示和收藏展示
+                在该组件中整合了，详情页的转跳，并使用了之前创建的LoadMore组件用于加载更多内容
+            - 接收搜索结果作为参数
+            - 使用map 方法 遍历搜索结果 渲染RecipeCard 组件
+        
