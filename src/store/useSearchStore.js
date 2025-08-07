@@ -58,4 +58,17 @@ export const useSearchStore = create((set, get) => ({
   clearRecentSearches: () => {
     set({ recentSearches: [] });
   },
+
+  // 更新最近搜索
+  updateRecentSearches: (query) => {
+    // 若最近搜索中已存在该查询 则将其移动到数组头部
+    if (get().recentSearches.includes(query)) {
+      const index = get().recentSearches.indexOf(query);
+      const newRecentSearches = [...get().recentSearches];
+      newRecentSearches.splice(index, 1);
+      set({ recentSearches: [query, ...newRecentSearches] });
+      return;
+    }
+    set({ recentSearches: [query, ...get().recentSearches] });
+  },
 }));

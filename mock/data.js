@@ -4,6 +4,7 @@ import { collection } from "./collection";
 import { product } from "./product";
 import { recipeDetail } from "./recipeDetail";
 import { search } from "./search";
+import { loginPage } from "./login";
 
 export default [
     ...home,
@@ -11,5 +12,6 @@ export default [
     ...collection,
     ...product,
     ...recipeDetail,
-    ...search
+    ...search,
+    ...loginPage
 ]

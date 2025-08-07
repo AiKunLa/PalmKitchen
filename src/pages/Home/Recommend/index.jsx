@@ -11,7 +11,6 @@ import LoadingMore from "@/components/LoadingMore";
 export default function Recommend() {
   const { recipes, loading, fetchMoreRecipes } = useHomeStore();
   const navigate = useNavigate();
-
   const handleRecipeClick = (e) => {
     const recipeId = e.target.dataset.recipeid;
     navigate(`/recipe/detail/${recipeId}`);

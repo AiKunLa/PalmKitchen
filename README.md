@@ -19,7 +19,7 @@
     pnpm i vite-plugin-mock -D 开发阶段
     pnpm i lib-flexible  解决移动端适配 等分屏幕
     pnpm i -D postcss postcss-pxtorem  解决px 转换为rem
-    
+    pnpm i jsonwebtoken  解决登录校验
 
 2. 配置vite.config.js
     ```js
@@ -177,3 +177,30 @@
             - 接收搜索结果作为参数
             - 使用map 方法 遍历搜索结果 渲染RecipeCard 组件
         
+9. 登录
+    - 在mock 中使用jsonwebtoken 来生成并校验token，使用sign生成token，verify校验token
+    - 使用axios拦截请求，在请求头中添加token
+    - 使用路由守卫，来保护需要登录才能访问的页面
+        ```js
+            <Route element={<PrivateRoute/>}>
+              <Route path="/account" element={<Account />} />
+              <Route path="/collection" element={<Collection />} />
+            </Route>
+        ```
+        创建useAuthStore 使用zustand 来管理登录状态
+            - 未登录时，将isAuthenticated 设置为false
+            - 登录后，将isAuthenticated 设置为true
+        在PrivateRoute 中使用useAuthStore 来判断是否登录
+            - 未登录时，跳转到登录页面
+            - 登录后，正常访问页面
+        
+        使用refreshToken 来实现token的无感刷新
+            后端用户登录校验成功后，返回授权码code
+            前端使用code 向后端请求accessToken 和 refreshToken
+            accessToken用于请求资源 2小时过期
+            refreshToken用于刷新accessToken 7天过期
+            当accessToken 过期时，不需要用户再次登录，而是使用refreshToken 来刷新accessToken，从而实现无感刷新
+        创建工具类tokenUtils 与 localStorageUtils 
+            - tokenUtils 校验token、从localStorage 中获取token
+            - localStorageUtils 存储数据
+

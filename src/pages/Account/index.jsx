@@ -2,16 +2,15 @@ import styles from "./account.module.css";
 import { useEffect } from "react";
 import { useTitle } from "@/hooks/useTitle";
 import TopSearch from "@/components/TopSearch";
-// import { Upload } from "@react-vant/icons";
 import { useAccountStore } from "@/store/useAccountStore";
 
 export default function Account() {
   useTitle("个人中心");
   const { account, getAccount } = useAccountStore();
 
-  // useEffect(() => {
-  //   getAccount(1);
-  // }, []);
+  useEffect(() => {
+    getAccount();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -25,12 +24,17 @@ export default function Account() {
         {/* 用户信息区域 */}
         <div className={styles.userInfo}>
           <div className={styles.avatarContainer}>
-            <img src={account.avatar} alt="用户头像" className={styles.avatar} />
+            <img
+              src={account.avatar}
+              alt="用户头像"
+              className={styles.avatar}
+            />
           </div>
           <div className={styles.userDetail}>
             <h2 className={styles.username}>{account.username}</h2>
             <p className={styles.userDesc}>
-              {account.gender === 0 ? "男" : "女"} · {account.joinTime}加入 · 职业：{account.occupation} 
+              {account.gender === 0 ? "男" : "女"} · {account.joinTime}加入 ·
+              职业：{account.occupation}
             </p>
             <p> 家乡：{account.homeAddress}</p>
             <p className={styles.userIp}>IP属地：{account.ip}</p>

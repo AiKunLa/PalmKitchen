@@ -21,6 +21,7 @@ export default function SearchPage() {
 
     clearRecentSearches,
     searchLoading,
+    updateRecentSearches,
 
     searchQuery,
     setSearchQuery,
@@ -32,6 +33,8 @@ export default function SearchPage() {
     if (searchQuery.trim()) {
       resetSearch();
       fetchSearchResults();
+      updateRecentSearches(searchQuery);
+
     } else {
       console.log("请输入搜索内容");
     }

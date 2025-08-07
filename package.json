@@ -12,6 +12,8 @@
   "dependencies": {
     "@react-vant/icons": "^0.1.0",
     "axios": "^1.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "lib-flexible": "^0.3.2",
     "mockjs": "^1.1.0",
     "react": "^19.1.1",

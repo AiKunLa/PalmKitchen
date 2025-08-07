@@ -4,16 +4,17 @@ import "./App.css";
 import MainLayout from "@/components/MainLayout";
 import BlankLayout from "@/components/BlankLayout";
 import GlobalLoading from "@/components/GlobalLoading";
+import PrivateRoute from "@/components/PrivateRoute";
 
 // 带有tabbar的Layout
 const Home = lazy(() => import("@/pages/home"));
 // Home
-const Recommend = lazy(() => import("@/components/Home/Recommend"));
-const Follow = lazy(() => import("@/components/Home/Follow"));
-const Weightloss = lazy(() => import("@/components/Home/Weightloss"));
-const Category = lazy(() => import("@/components/Home/Category"));
+const Recommend = lazy(() => import("@/pages/Home/Recommend"));
+const Follow = lazy(() => import("@/pages/Home/Follow"));
+const Weightloss = lazy(() => import("@/pages/Home/Weightloss"));
+const Category = lazy(() => import("@/pages/Home/Category"));
 
-const Shop = lazy(() => import("@/pages/shop"));
+const Shop = lazy(() => import("@/pages/Shop"));
 const Camera = lazy(() => import("@/pages/camera"));
 const Collection = lazy(() => import("@/pages/collection"));
 const Account = lazy(() => import("@/pages/account"));
@@ -44,8 +45,11 @@ function App() {
 
             <Route path="/shop" element={<Shop />} />
             <Route path="/camera" element={<Camera />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/account" element={<Account />} />
+
+            <Route element={<PrivateRoute/>}>
+              <Route path="/account" element={<Account />} />
+              <Route path="/collection" element={<Collection />} />
+            </Route>
           </Route>
 
           <Route element={<BlankLayout />}>

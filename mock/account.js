@@ -1,5 +1,7 @@
 import Mock from "mockjs";
+import jwt from "jsonwebtoken";
 
+const JWT_SECRET = "your_jwt_secret";
 const getAccountInfo = (userId) => {
   return {
     userId: Number(userId),
@@ -24,12 +26,36 @@ export const account = [
     method: "get",
     timeout: 1000,
     response: (req) => {
-      const userId = Number(req.query.userId);
-      return {
-        code: 0,
-        msg: "success",
-        data: getAccountInfo(userId),
-      };
+      try {
+        // 判定token是否有效
+        const token = req.headers.authorization.split(" ")[1];
+        console.log(token, "token");
+
+        const decoded = jwt.verify(token, JWT_SECRET);
+        console.log(decoded, "decoded");
+        if (!decoded) {
+          return {
+            status: 401,
+            code: 1,
+            msg: "token无效",
+            data: null,
+          };
+        }
+        const { userId } = decoded;
+
+        return {
+          code: 0,
+          msg: "success",
+          data: getAccountInfo(userId),
+        };
+      } catch (error) {
+        return {
+          status: 500,
+          code: 1,
+          msg: "服务器错误",
+          data: null,
+        };
+      }
     },
   },
 ];

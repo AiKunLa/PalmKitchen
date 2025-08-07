@@ -3,8 +3,9 @@ import { TopSearch } from "@/components/TopSearch";
 import { useState } from "react";
 import RecipeList from "@/components/RepiceList";
 import { useCollectionStore } from "@/store/useCollectionStore";
-
+import useTitle from "@/hooks/useTitle";
 export default function Collection() {
+  useTitle('收藏')
   const [activeTab, setActiveTab] = useState(0);
   const tabs = ["所有菜谱", "菜单", "课程", "浏览历史"];
   const { collection, loading, fetchMoreCollection } = useCollectionStore();

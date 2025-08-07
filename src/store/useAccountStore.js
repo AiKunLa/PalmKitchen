@@ -15,13 +15,12 @@ export const useAccountStore = create((set, get) => ({
     fansCount: 1,
     followCount: 10,
   },
-  
-  getAccount: async (userId) =>  {
-    const res = await getAccountInfo(userId);
+
+  getAccount: async () => {
+    const res = await getAccountInfo();
     console.log(res);
     set({ account: res.data });
-  }
-
+  },
 }));
 
 export default useAccountStore;
