@@ -8,13 +8,9 @@ export default defineConfig({
   plugins: [
     react(),
     viteMockServe({
-      mockPath: "mock",
+      mockPath: "./src/mock", // 指向 src 内的 mock
       localEnabled: true,
       prodEnabled: true,
-      injectCode: `
-  import { setupProdMockServer } from '/mock/mockProdServer';
-  setupProdMockServer();
-`,
       logger: false,
     }),
   ],

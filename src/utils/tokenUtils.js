@@ -1,4 +1,4 @@
-import { LocalStorageUtil } from "./LocalStorageUtil";
+import { LocalStorageUtil } from "./localStorageUtil";
 import { jwtDecode } from "jwt-decode";
 
 export const TokenUtil = {
