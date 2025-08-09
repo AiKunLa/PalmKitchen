@@ -1,5 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Dialog } from "react-vant";
+
 import styles from "./login.module.css";
 import TopDetail from "@/components/TopDetail";
 import { useAuthoStore } from "@/store/useAuthoStore";
@@ -15,6 +17,8 @@ export default function Login() {
   const [agreed, setAgreed] = useState(false);
   const [loginError, setLoginError] = useState("");
 
+  const [isNull, setIsNull] = useState(false);
+
   const { doLogin, isAuthenticated, isLoading } = useAuthoStore();
 
   // 监听登录状态变化
@@ -28,22 +32,25 @@ export default function Login() {
   }, [isAuthenticated, navigate, location.search]);
 
   const handleLogin = async () => {
-    if (!agreed) {
-      setLoginError("请阅读并同意服务协议和隐私保护指引");
+  
+    if (!agreed || !username || !password) {
+      setIsNull(true);
       return;
     }
+
     try {
       setLoginError("");
       await doLogin(username, password);
       // 登录成功后会触发 isAuthenticated 变化，由 useEffect 处理重定向
+      if(!isAuthenticated){
+        setLoginError("登录失败，请检查账号密码");
+        alert("登录失败，请检查账号密码");
+      }
     } catch (error) {
-      setLoginError("登录失败，请检查账号密码");
       console.error("Login error:", error);
     }
   };
-
   // if(isLoading) return <GlobalLoading />;
-
 
   return (
     <div className={styles.container}>
@@ -51,7 +58,6 @@ export default function Login() {
       <div className={styles.header}>
         <TopDetail />
       </div>
-
       <main className={styles.content}>
         <h1 className={styles.title}>登录</h1>
         <input
@@ -59,8 +65,12 @@ export default function Login() {
           placeholder="输入账号"
           className={styles.inputField}
           value={username}
+          autoFocus
           onChange={(e) => setUsername(e.target.value)}
         />
+        <div className={styles.error}>
+          {!username && isNull && "请输入账号"}
+        </div>
 
         <input
           type="password"
@@ -69,6 +79,9 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <div className={styles.error}>
+          {!password && isNull && "请输入密码"}
+        </div>
 
         <button className={styles.loginButton} onClick={handleLogin}>
           登录
@@ -81,8 +94,11 @@ export default function Login() {
             checked={agreed}
             onChange={(e) => setAgreed(e.target.checked)}
           />
-          <label className={styles.checkboxLabel}>
-            已阅读并同意服务协议和隐私保护指引
+          <label
+            className={styles.checkboxLabel}
+            style={{ color: agreed || !isNull ? "black" : "red" }}
+          >
+            {agreed ? "已同意" : "未同意"} 服务协议和隐私保护指引
           </label>
         </div>
       </main>

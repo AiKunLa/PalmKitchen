@@ -26,11 +26,23 @@ position: relative;
   background-color: #f5f5f5;
   border: 1px solid #ddd;
   padding: 0 15px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   font-size: 28px;
   box-sizing: border-box;
   text-align: center;
 }
+
+.error {
+  color: red;
+  font-size: 24px;
+  margin-top: 10px;
+  display: block;
+  height: 48px;
+  margin: 0;
+  /* 垂直居中 */
+  line-height: 48px;
+}
+
 
 .loginButton {
   width: 100%;

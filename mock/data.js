@@ -6,12 +6,13 @@ import { recipeDetail } from "./recipeDetail";
 import { search } from "./search";
 import { loginPage } from "./login";
 
-export default [
-    ...home,
-    ...account,
-    ...collection,
-    ...product,
-    ...recipeDetail,
-    ...search,
-    ...loginPage
-]
+export const data = [
+  ...home,
+  ...account,
+  ...collection,
+  ...product,
+  ...recipeDetail,
+  ...search,
+  ...loginPage,
+];
+export default data;

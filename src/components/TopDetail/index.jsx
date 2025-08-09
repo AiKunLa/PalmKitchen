@@ -7,7 +7,7 @@ export default function TopDetail({ type = 1 }) {
   const navigate = useNavigate();
 
   const handleSearchClick = () => {
-    navigate("/search");
+    // navigate("/search");
   };
 
   const handleBackClick = (e) => {

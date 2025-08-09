@@ -2,7 +2,7 @@ import axios from "axios";
 import { TokenUtil } from "@/utils/tokenUtils";
 
 const instance = axios.create({
-  baseURL: "http://localhost:5173/api",
+  baseURL: import.meta.env.PROD ? '/api' : 'http://localhost:5173/api',
   headers: {
     "Content-Type": "application/json",
   },

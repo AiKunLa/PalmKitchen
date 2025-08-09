@@ -18,7 +18,7 @@ const getRecipes = (page, pageSize = 8) => {
 export const home = [
   {
     url: "/api/getRecipes",
-    method: "get",
+    method: "GET",
     timeout: 1000,
     response: (req) => {
       const page = Number(req.query.page) || 1;
