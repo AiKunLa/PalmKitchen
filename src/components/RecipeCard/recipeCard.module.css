@@ -4,6 +4,7 @@
 }
 
 .cover {
+    width: 100%;
     height: 460px;
     /* 图片居中 */
     display: flex;

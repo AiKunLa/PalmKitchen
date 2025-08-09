@@ -7,7 +7,7 @@ import GlobalLoading from "@/components/GlobalLoading";
 import PrivateRoute from "@/components/PrivateRoute";
 
 // 带有tabbar的Layout
-const Home = lazy(() => import("@/pages/home"));
+const Home = lazy(() => import("@/pages/Home"));
 // Home
 const Recommend = lazy(() => import("@/pages/Home/Recommend"));
 const Follow = lazy(() => import("@/pages/Home/Follow"));
