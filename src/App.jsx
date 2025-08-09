@@ -15,15 +15,15 @@ const Weightloss = lazy(() => import("@/pages/Home/Weightloss"));
 const Category = lazy(() => import("@/pages/Home/Category"));
 
 const Shop = lazy(() => import("@/pages/Shop"));
-const Camera = lazy(() => import("@/pages/camera"));
-const Collection = lazy(() => import("@/pages/collection"));
-const Account = lazy(() => import("@/pages/account"));
+const Camera = lazy(() => import("@/pages/Camera"));
+const Collection = lazy(() => import("@/pages/Collection"));
+const Account = lazy(() => import("@/pages/Account"));
 
 // 不需要tabbar的Layout
-const Login = lazy(() => import("@/pages/login"));
-const Register = lazy(() => import("@/pages/register"));
-const RecipeDetail = lazy(() => import("@/pages/recipeDetail"));
-const ProductDetail = lazy(() => import("@/pages/productDetail"));
+const Login = lazy(() => import("@/pages/Login"));
+const Register = lazy(() => import("@/pages/Register"));
+const RecipeDetail = lazy(() => import("@/pages/RecipeDetail"));
+const ProductDetail = lazy(() => import("@/pages/ProductDetail"));
 const SearchPage = lazy(() => import("@/pages/SearchPage"));
 
 function App() {

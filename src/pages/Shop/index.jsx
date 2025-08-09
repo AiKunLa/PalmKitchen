@@ -5,8 +5,9 @@ import ProductCard from "@/components/ProductCard";
 import { useShopStore } from "@/store/useShopStore";
 import LoadingMore from "@/components/LoadingMore";
 import useTitle from "@/hooks/useTitle";
+import { useEffect } from "react";
 export default function Shop() {
-  useTitle('商店')
+  useTitle("商店");
   const [activeTab, setActiveTab] = useState(3); // 初始选中"商店"标签
   const [activeRankTab, setActiveRankTab] = useState(0); // 初始选中"全部"标签
   const tabs = ["关注", "推荐", "减脂", "商店", "分类"];
@@ -21,6 +22,10 @@ export default function Shop() {
     rankProductsLoading,
   } = useShopStore();
 
+  useEffect(() => {
+    if (!newProductsLoading) fetchNewProducts();
+    if (!rankProductsLoading) fetchMoreRanKProducts();
+  }, []);
 
   // if(newProductsLoading) return <GlobalLoading />
 
@@ -47,7 +52,9 @@ export default function Shop() {
         <div className={styles.newProducts}>
           <div className={styles.sectionTitle}>
             <span>每日上新</span>
-            <span onClick={() => fetchNewProducts()} className={styles.more}>想要的商品</span>
+            <span onClick={() => fetchNewProducts()} className={styles.more}>
+              想要的商品
+            </span>
           </div>
           <div className={styles.productGrid}>
             {newProducts.map((product) => (
@@ -80,7 +87,10 @@ export default function Shop() {
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-          <LoadingMore loadMore={fetchMoreRanKProducts} loading={rankProductsLoading} />
+          <LoadingMore
+            loadMore={fetchMoreRanKProducts}
+            loading={rankProductsLoading}
+          />
         </div>
       </div>
     </div>

@@ -14,6 +14,7 @@ export const useShopStore = create((set, get) => ({
     if (get().newProductsLoading) return;
     set({ newProductsLoading: true });
     try {
+      // 若请求失败则重复请求
       const res = await getNewProduct();
       set((state) => ({
         ...state,
@@ -30,9 +31,9 @@ export const useShopStore = create((set, get) => ({
     set({ rankProductsLoading: true });
     try {
       // 若newProducts 为空 则先获取newProducts
-      if (get().newProducts.length === 0) {
-        await get().fetchNewProducts();
-      }
+      // if (get().newProducts.length === 0) {
+      //   await get().fetchNewProducts();
+      // }
       
       const res = await getRankProduct(get().rankProductsPage);
       set((state) => ({
