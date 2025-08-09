@@ -115,6 +115,7 @@
         - Weightloss 减脂
         - Category 分类
     - 使用 IntersectionObserver 封装自定义hooks 实现加载更多菜谱并实现图片懒加载
+    - 使用 useLazyLoadImg 自定义hooks 实现图片懒加载
 
 3. chat Ai聊天
     - 创建 useChatStore 来管理聊天状态 ， 通过 chat.js 中封装的方法来实现获取AI的回复
@@ -178,9 +179,10 @@
             - 使用map 方法 遍历搜索结果 渲染RecipeCard 组件
         
 9. 登录
+    - 使用jwt来生成token凭证
     - 在mock 中使用jsonwebtoken 来生成并校验token，使用sign生成token，verify校验token
     - 使用axios拦截请求，在请求头中添加token
-    - 使用路由守卫，来保护需要登录才能访问的页面
+    - 使用路由守卫PrivateRoute，来保护需要登录才能访问的页面
         ```js
             <Route element={<PrivateRoute/>}>
               <Route path="/account" element={<Account />} />
@@ -190,10 +192,10 @@
         创建useAuthStore 使用zustand 来管理登录状态
             - 未登录时，将isAuthenticated 设置为false
             - 登录后，将isAuthenticated 设置为true
-        在PrivateRoute 中使用useAuthStore 来判断是否登录
+        在PrivateRoute 中使用isAuthenticated 来判断是否登录
             - 未登录时，跳转到登录页面
-            - 登录后，正常访问页面
-        
+            - 进入登录页面登录后，导航到之前访问的页面，若之前未访问过页面，则导航到首页
+
         使用refreshToken 来实现token的无感刷新
             后端用户登录校验成功后，返回授权码code
             前端使用code 向后端请求accessToken 和 refreshToken
@@ -204,3 +206,69 @@
             - tokenUtils 校验token、从localStorage 中获取token
             - localStorageUtils 存储数据
 
+10. 添加侧边栏功能
+    使用react-vant中的Popup 组件 实现侧边栏
+    在侧边栏中，可以进行一些页面的导航，以及登录登出操作
+    - 登录登出
+        - 未登录时，显示登录按钮
+        - 登录后，显示用户信息和登出按钮
+    
+
+
+
+
+
+## 问题优化
+1. 如何解决在组件挂载时由于使用useEffect导致每次组件挂载时都请求新数据的问题
+    - 在状态管理中添加缓存机制
+    - 在useEffect中添加条件检查，只有当数据不存在时才在组件挂载时请求数据
+        ```js
+        useEffect(() => {
+            if (!data) {
+                fetchData();
+            }
+        }, [data]);
+        ```
+    - 创建一个通用的钩子来处理带缓存的数据加载逻辑：
+
+2. 如何实现当登录成功后导航到之前被守卫的页面
+    - 通过传递路径参数来实现 在路由守卫中获取被守卫组件的路径并传递给登录组件，登录成功后导航到之前被守卫的页面
+
+    - 在守卫组件中添加如下逻辑
+        ```js
+            import { Navigate, useLocation } from "react-router-dom";
+            const location = useLocation();
+            if(没有登录){
+                return <Navigate to={{
+                    pathname: "/login",
+                    search: `redirect=${encodeURIComponent(
+                        location.pathname + location.search
+                    )}`,
+                }} replace />;
+            }
+        ```
+    - 在登录组件中添加逻辑
+        ```js
+            import { useLocation, useNavigate } from "react-router-dom";
+            const navigate = useNavigate();
+            const location = useLocation();
+            const redirect = new URLSearchParams(location.search).get("redirect");
+            ...登录处理
+            ...登录成功后处理
+            if (redirect) {
+                navigate(redirect);
+            }
+        ```
+
+
+3. 如何实现统一错误处理
+
+
+4. 如何实现元素可见跟踪
+    用于图片懒加载、无限滚动加载更多内容
+    - 创建useIntersectObs 接收回调函数，返回ref用于监听元素
+        用于监听元素的可见性
+        当元素进入视口时，触发回调函数
+    - 创建LoadMore 组件
+        用于加载更多内容
+        当用户滚动到组件底部时，触发加载更多内容的请求

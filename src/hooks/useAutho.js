@@ -4,5 +4,4 @@ export const useAutho = () => {
   const { account } = useAccountStore();
   const navigate = useNavigate();
   navigate('/login');
-  
 };

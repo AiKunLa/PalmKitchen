@@ -1,18 +1,9 @@
-import { useState, useCallback } from "react";
-import useIntersectObs from "@/hooks/useIntersectObs";
 import styles from "./productCard.module.css";
+import useLazyLoadImg from "@/hooks/useLazyLoadImg";
+
 
 export default function ProductCard({ product }) {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  const lazyLoadImg = useCallback(() => {
-    if (!imageLoaded && targetRef.current) {
-      targetRef.current.src = targetRef.current.dataset.src;
-      setImageLoaded(true);
-    }
-  }, [imageLoaded]);
-
-  const targetRef = useIntersectObs(lazyLoadImg);
+  const { targetRef, imageLoaded } = useLazyLoadImg();
 
   return (
     <div className={styles.productCard}>
@@ -22,7 +13,7 @@ export default function ProductCard({ product }) {
           data-src={product.image}
           src="/loading.gif"
           alt={product.name}
-          className={imageLoaded ? "fade-in" : ""}
+          className={imageLoaded ? styles.coverImgLoaded : styles.coverImgLoading}
         />
       </div>
       <div className={styles.productInfo}>

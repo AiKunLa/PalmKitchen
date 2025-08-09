@@ -15,5 +15,5 @@
     width: auto;
     height: auto;
     /* 可选：添加背景遮罩 */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.5);
 }

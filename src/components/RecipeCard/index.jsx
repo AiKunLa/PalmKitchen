@@ -1,31 +1,27 @@
-import { Arrow } from '@react-vant/icons'
-import { Card, Image} from 'react-vant'
-import styles from './recipeCard.module.css'
-import useIntersectObs from '@/hooks/useIntersectObs';
-import { useCallback ,useState } from 'react';
-
+import { Arrow } from "@react-vant/icons";
+import { Card } from "react-vant";
+import styles from "./recipeCard.module.css";
+import useLazyLoadImg from "@/hooks/useLazyLoadImg";
 
 export default function RecipeCard({ recipe }) {
-
-  const [image, setImage] = useState('https://s1.chu0.com/src/img/gif/0b/0ba928a5dd454cdd937807d2981725d2.gif?e=2051020800&token=1srnZGLKZ0Aqlz6dk7yF4SkiYf4eP-YrEOdM1sob:if9O14UxKtoZcAl-PQpvKosn_AM=')
-  
-  const lazyLoadImg = useCallback(() => {
-    setImage(recipe.image)
-  }, [recipe.image])
-
-  const targetRef = useIntersectObs(lazyLoadImg)  
-
+  const { targetRef, imageLoaded } = useLazyLoadImg();
   return (
     <>
       <Card className={styles.recipeCard}>
         <Card.Cover className={styles.cover}>
-          <img ref={targetRef} src={image} data-recipeid={recipe.id} />
+          <img
+            ref={targetRef}
+            data-src={recipe.image}
+            src={"/loading.gif"}
+            data-recipeid={recipe.id}
+            className={
+              imageLoaded ? styles.coverImgLoaded : styles.coverImgLoading
+            }
+          />
         </Card.Cover>
         <Card.Header extra={<Arrow />}>{recipe.title}</Card.Header>
-        <Card.Body className={styles.body}>
-          {recipe.author}
-        </Card.Body>
+        <Card.Body className={styles.body}>{recipe.author}</Card.Body>
       </Card>
-    </> 
+    </>
   );
 }

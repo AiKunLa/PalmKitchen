@@ -4,11 +4,20 @@
 }
 
 .cover {
+    height: 460px;
+    /* 图片居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(247, 248, 250);
 }
 
-.cover img {
+.coverImgLoading {
+    width: 40px;
+    height: 40px;
+}
+.coverImgLoaded  {
     aspect-ratio: 3/4;
-
     border-radius: 20px;
     /* 图片居中 */
     object-fit: cover;

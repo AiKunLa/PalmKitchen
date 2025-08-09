@@ -1,16 +1,11 @@
 import styles from "./account.module.css";
-import { useEffect } from "react";
 import { useTitle } from "@/hooks/useTitle";
 import TopSearch from "@/components/TopSearch";
 import { useAccountStore } from "@/store/useAccountStore";
 
 export default function Account() {
   useTitle("个人中心");
-  const { account, getAccount } = useAccountStore();
-
-  useEffect(() => {
-    getAccount();
-  }, []);
+  const { account } = useAccountStore();
 
   return (
     <div className={styles.container}>

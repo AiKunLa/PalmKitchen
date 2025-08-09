@@ -1,10 +1,9 @@
 import styles from "./shop.module.css";
 import { TopSearch } from "@/components/TopSearch";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import { useShopStore } from "@/store/useShopStore";
 import LoadingMore from "@/components/LoadingMore";
-import GlobalLoading from "@/components/GlobalLoading";
 import useTitle from "@/hooks/useTitle";
 export default function Shop() {
   useTitle('商店')
@@ -22,9 +21,6 @@ export default function Shop() {
     rankProductsLoading,
   } = useShopStore();
 
-  useEffect(() => {
-    fetchNewProducts();
-  }, []);
 
   // if(newProductsLoading) return <GlobalLoading />
 

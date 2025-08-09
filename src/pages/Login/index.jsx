@@ -3,8 +3,11 @@ import { useState, useEffect } from "react";
 import styles from "./login.module.css";
 import TopDetail from "@/components/TopDetail";
 import { useAuthoStore } from "@/store/useAuthoStore";
+import GlobalLoading from "@/components/GlobalLoading";
+import { useTitle } from "@/hooks/useTitle";
 
 export default function Login() {
+  useTitle("用户登录");
   const navigate = useNavigate();
   const location = useLocation();
   const [username, setUsername] = useState("");
@@ -12,7 +15,7 @@ export default function Login() {
   const [agreed, setAgreed] = useState(false);
   const [loginError, setLoginError] = useState("");
 
-  const { doLogin, isAuthenticated } = useAuthoStore();
+  const { doLogin, isAuthenticated, isLoading } = useAuthoStore();
 
   // 监听登录状态变化
   useEffect(() => {
@@ -29,7 +32,6 @@ export default function Login() {
       setLoginError("请阅读并同意服务协议和隐私保护指引");
       return;
     }
-
     try {
       setLoginError("");
       await doLogin(username, password);
@@ -40,8 +42,12 @@ export default function Login() {
     }
   };
 
+  // if(isLoading) return <GlobalLoading />;
+
+
   return (
     <div className={styles.container}>
+      {isLoading && <GlobalLoading />}
       <div className={styles.header}>
         <TopDetail />
       </div>

@@ -1,26 +1,22 @@
-import { Arrow } from "@react-vant/icons";
-import useIntersectObs from "@/hooks/useIntersectObs";
-import { memo, useCallback, useState } from "react";
 import styles from "./collectionRecipeCard.module.css";
-
+import useLazyLoadImg from "@/hooks/useLazyLoadImg";
 // 内部 RecipeCard 组件，按照图片布局定制
 
-const CollectionRecipeCard = memo(({ recipe }) => {
-   const [imageLoaded, setImageLoaded] = useState(false);
-
-  const lazyLoadImg = useCallback(() => {
-    if (!imageLoaded && targetRef.current) {
-      targetRef.current.src = targetRef.current.dataset.src;
-      setImageLoaded(true);
-    }
-  }, [imageLoaded]);
-
-  const targetRef = useIntersectObs(lazyLoadImg);
+const CollectionRecipeCard = ({ recipe }) => {
+  const { targetRef, imageLoaded } = useLazyLoadImg();
 
   return (
     <div className={styles.recipeCard} data-recipe-id={recipe.id}>
       <div className={styles.cover}>
-        <img ref={targetRef} data-src={recipe.image} src="/loading.gif" alt={recipe.title} />
+        <img
+          ref={targetRef}
+          data-src={recipe.image}
+          src="/loading.gif"
+          alt={recipe.title}
+          className={
+            imageLoaded ? styles.coverImgLoaded : styles.coverImgLoading
+          }
+        />
       </div>
 
       <div className={styles.cardInfo}>
@@ -45,6 +41,6 @@ const CollectionRecipeCard = memo(({ recipe }) => {
       </div>
     </div>
   );
-});
+};
 
 export default CollectionRecipeCard;

@@ -1,12 +1,14 @@
 import { create } from "zustand";
 import { login, getAccessToken, refreshAccessToken } from "@/api/login";
 import { TokenUtil } from "@/utils/tokenUtils";
+import { useAccountStore } from "@/store/useAccountStore";
 
 /**
  * 认证状态管理
  */
 export const useAuthoStore = create((set, get) => ({
   isAuthenticated: false,
+  isLoading: false,
   error: null,
 
   changeAuth: (auth) => {
@@ -18,18 +20,24 @@ export const useAuthoStore = create((set, get) => ({
    * @param {*} data 登录凭证
    */
   doLogin: async (username, password) => {
+    if(get().isLoading) return;
     try {
+      set({ isLoading: true });
       const res = await login(username, password);
       const { verify_code } = res.data;
 
       const tokenRes = await getAccessToken(verify_code);
 
-      const { access_token, refresh_token } = tokenRes.data;
+      const { access_token, refresh_token  } = tokenRes.data;
       TokenUtil.setAccessToken(access_token);
       TokenUtil.setRefreshToken(refresh_token);
+      // 登录成功后获取用户信息
+      await useAccountStore.getState().getAccount();
 
-      set({ isAuthenticated: true });
+      set({ isAuthenticated: true, isLoading: false });
+
     } catch (error) {
+      set({ isAuthenticated: false, isLoading: false });
       console.log(error);
     }
   },

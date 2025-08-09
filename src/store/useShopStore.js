@@ -29,6 +29,11 @@ export const useShopStore = create((set, get) => ({
     if (get().rankProductsLoading) return;
     set({ rankProductsLoading: true });
     try {
+      // 若newProducts 为空 则先获取newProducts
+      if (get().newProducts.length === 0) {
+        await get().fetchNewProducts();
+      }
+      
       const res = await getRankProduct(get().rankProductsPage);
       set((state) => ({
         ...state,

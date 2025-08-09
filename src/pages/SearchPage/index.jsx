@@ -34,7 +34,6 @@ export default function SearchPage() {
       resetSearch();
       fetchSearchResults();
       updateRecentSearches(searchQuery);
-
     } else {
       console.log("请输入搜索内容");
     }
@@ -55,8 +54,9 @@ export default function SearchPage() {
 
   // 点击keyword区域
   const handleSearchAreasClick = (e) => {
-    const keyword = e.target.innerText;
-    if (keyword.trim()) {
+    const keyword = e.target?.dataset.keyword?.trim();
+    if (keyword) {
+      console.log(keyword);
       setSearchQuery(keyword);
       handleSearchClick();
     }
@@ -110,6 +110,7 @@ export default function SearchPage() {
                       className={`${styles.keyword} ${
                         index === 0 ? styles.activeKeyword : ""
                       }`}
+                      data-keyword={keyword}
                     >
                       {index === 0 && (
                         <span className={styles.activityTag}>活动</span>
@@ -128,7 +129,11 @@ export default function SearchPage() {
               <div className={styles.keywordsContainer}>
                 {suggestedSearches.length > 0 &&
                   suggestedSearches.map((keyword, index) => (
-                    <div key={index} className={styles.keyword}>
+                    <div
+                      key={index}
+                      className={styles.keyword}
+                      data-keyword={keyword}
+                    >
                       {keyword}
                     </div>
                   ))}

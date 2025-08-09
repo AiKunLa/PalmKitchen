@@ -10,13 +10,30 @@
   aspect-ratio: 1/1;
   border-radius: 10%;
   overflow: hidden;
+  /* 图片居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(247, 248, 250);
+
 }
 
-.productImage img {
+/* .productImage img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+} */
+
+.coverImgLoading {
+    width: 40px;
+    height: 40px;
 }
+.coverImgLoaded  {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+
 
 /* 商品信息 */
 

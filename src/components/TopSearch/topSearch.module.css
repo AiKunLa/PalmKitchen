@@ -35,3 +35,39 @@
   width: 40px;
   height: 40px;
 }
+
+
+/* 退出登录弹窗 */
+.popupContent {
+  padding: 20px;
+  text-align: center;
+}
+
+.popupTitle {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.popupButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cancelButton {
+  flex: 1;
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.confirmButton {
+  flex: 1;
+  background-color: #f04848;
+  color: white;
+}
+
+
+.cell {
+  font-weight: bold;
+  
+}
