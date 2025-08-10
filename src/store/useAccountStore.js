@@ -21,6 +21,15 @@ export const useAccountStore = create((set, get) => ({
     console.log(res);
     set({ account: res.data });
   },
+
+  updateAccount: async (newAccount) => {
+    set((state) => ({
+      account: {
+        ...state.account,
+        ...newAccount,
+      },
+    }));
+  },
 }));
 
 export default useAccountStore;

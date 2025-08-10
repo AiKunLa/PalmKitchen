@@ -1,0 +1,19 @@
+.container {
+position: relative;
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  box-sizing: border-box;
+}
+
+.content {
+  padding: 80px 60px 80px 60px;
+}
+.avatar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,16 +1,14 @@
 import styles from "./topDetail.module.css";
-import { ArrowLeft, Ellipsis } from "@react-vant/icons";
-import { Search } from "react-vant";
+import { ArrowLeft, Ellipsis, Passed } from "@react-vant/icons";
 import { useNavigate } from "react-router-dom";
-
-export default function TopDetail({ type = 1 }) {
+export default function TopDetail({ type = 1, children, handleAction }) {
   const navigate = useNavigate();
 
   const handleSearchClick = () => {
     // navigate("/search");
   };
 
-  const handleBackClick = (e) => {
+  const handleBackClick = () => {
     // 返回上一页
     navigate(-1);
   };
@@ -24,14 +22,11 @@ export default function TopDetail({ type = 1 }) {
       <div className={styles.topNav}>
         <ArrowLeft className={styles.menuIcon} onClick={handleBackClick} />
         <div className={styles.searchContainer} onClick={handleSearchClick}>
-          {/* <Search
-            className={styles.searchBar}
-            placeholder="搜索菜谱"
-            shape="round"
-          /> */}
+          {children ? children : ""}
         </div>
+
         {type === 3 ? (
-          ""
+          <Passed className={styles.bellIcon} onClick={handleAction} />
         ) : (
           <Ellipsis className={styles.bellIcon} onClick={handleMsgClick} />
         )}

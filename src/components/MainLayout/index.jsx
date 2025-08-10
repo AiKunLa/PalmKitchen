@@ -6,7 +6,7 @@ import { WapHome, ShopO, AddSquare, StarO, UserO } from "@react-vant/icons";
 const tabs = [
   { icon: <WapHome />, title: "首页", path: "/home" },
   { icon: <ShopO />, title: "商店", path: "/shop" },
-  { icon: <AddSquare />, title: "拍照查询", path: "/camera" },
+  { icon: <AddSquare />, title: "AI对话", path: "/camera" },
   { icon: <StarO />, title: "收藏", path: "/collection" },
   { icon: <UserO />, title: "我", path: "/account" },
 ];

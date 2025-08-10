@@ -8,6 +8,7 @@ import {
   ManagerO,
   ClockO,
   ShoppingCartO,
+  Edit,
 } from "@react-vant/icons";
 
 import { Cell, Popup, Search, Button } from "react-vant";
@@ -129,8 +130,19 @@ export default function TopSearch({ type = 1 }) {
             shape="round"
           />
         </div>
-        {type === 3 ? (
+
+        {/* 根据type的不同显示不同的图标 type=1 显示搜索图标 type=2 显示消息图标 type=3 显示用户图标 */}
+        {type === 1 ? (
+          <ChatO className={styles.bellIcon} onClick={handleMsgClick} />
+        ) : type === 2 ? (
+          <ChatO className={styles.bellIcon} onClick={handleMsgClick} />
+        ) : type === 3 ? (
           ""
+        ) : type === 4 ? (
+          <Edit
+            className={styles.bellIcon}
+            onClick={() => navigate("/editUserMsg")}
+          />
         ) : (
           <ChatO className={styles.bellIcon} onClick={handleMsgClick} />
         )}

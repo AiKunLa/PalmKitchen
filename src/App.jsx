@@ -25,6 +25,7 @@ const Register = lazy(() => import("@/pages/Register"));
 const RecipeDetail = lazy(() => import("@/pages/RecipeDetail"));
 const ProductDetail = lazy(() => import("@/pages/ProductDetail"));
 const SearchPage = lazy(() => import("@/pages/SearchPage"));
+const EditUserMsg = lazy(() => import("@/pages/EditUserMsg"));
 
 function App() {
   return (
@@ -58,6 +59,9 @@ function App() {
             <Route path="/recipe/detail/:id" element={<RecipeDetail />} />
             <Route path="/product/detail/:id" element={<ProductDetail />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route element={<PrivateRoute/>}>
+              <Route path="/editUserMsg" element={<EditUserMsg />} />
+            </Route>
           </Route>
         </Routes>
       </Suspense>
