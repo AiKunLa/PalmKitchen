@@ -107,6 +107,7 @@ export default function TopSearch({ type = 1 }) {
               onClick={() => {
                 doLogout();
                 setLoginOutVisible(false);
+                navigate("/login");
               }}
             >
               确定

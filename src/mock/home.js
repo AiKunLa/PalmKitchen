@@ -6,7 +6,7 @@ import Mock from "mockjs";
  * @param {*} pageSize 
  * @returns 
  */
-const getRecipes = (page, pageSize = 8) => {
+export const getRecipes = (page, pageSize = 8) => {
   return Array.from({ length: pageSize }, (_, i) => ({
     id: `${page}-${i}`, // 作为索引的id
     title: Mock.Random.ctitle(4, 8),

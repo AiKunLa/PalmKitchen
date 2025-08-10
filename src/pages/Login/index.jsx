@@ -25,6 +25,7 @@ export default function Login() {
   useEffect(() => {
     if (isAuthenticated) {
       // 获取重定向路径
+      alert("登录成功");
       const searchParams = new URLSearchParams(location.search);
       const redirectPath = searchParams.get("redirect") || "/home";
       navigate(redirectPath);
@@ -44,7 +45,7 @@ export default function Login() {
       // 登录成功后会触发 isAuthenticated 变化，由 useEffect 处理重定向
       if(!isAuthenticated){
         setLoginError("登录失败，请检查账号密码");
-        alert("登录失败，请检查账号密码");
+        
       }
     } catch (error) {
       console.error("Login error:", error);

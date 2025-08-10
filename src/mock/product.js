@@ -1,6 +1,6 @@
 import Mock from "mockjs";
 
-const getNewProduct = (page, pageSize = 6) => {
+export const getNewProduct = (page, pageSize = 6) => {
   return Array.from({ length: pageSize }, (_, index) => ({
     id: `new-${page}-${index}`,
     name: Mock.Random.ctitle(4, 8),
@@ -12,7 +12,8 @@ const getNewProduct = (page, pageSize = 6) => {
   }));
 };
 
-const getRankProduct = (page, pageSize = 8) => {
+export const getRankProduct = (page, pageSize = 8) => {
+
   return Array.from({ length: pageSize }, (_, index) => ({
     id: `rank-${page}-${index}`,
     name: Mock.Random.ctitle(4, 8),

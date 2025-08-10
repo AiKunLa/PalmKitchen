@@ -1,21 +1,24 @@
 import Mock from "mockjs";
 
-const getRecentSearches = () => {
+export const getRecentSearches = () => {
   return Array.from({ length: Mock.Random.integer(4, 10) }, () =>
     Mock.Random.ctitle(2, 5)
   );
 };
 
-const getSuggestedSearches = () => {
+export const getSuggestedSearches = () => {
   return Array.from({ length: Mock.Random.integer(4, 10) }, () =>
     Mock.Random.ctitle(2, 5)
   );
 };
 
-const getSearchResults = (page, pageSize = 8) => {
+export const getSearchResults = (page, pageSize = 8, query) => {
   return Array.from({ length: pageSize }, (_, i) => ({
     id: `${page}-${i}`, // 作为索引的id
-    title: Mock.Random.ctitle(4, 8),
+    title: query
+      ? `${Mock.Random.cword(2)}${query}${Mock.Random.cword(2)}`
+      : Mock.Random.ctitle(4, 8),
+
     image: Mock.Random.image("300x400", Mock.Random.color(), "#fff", "img"),
     author: Mock.Random.cname(),
     rating: Mock.Random.float(1.0, 10.0, 1, 1),
@@ -54,7 +57,7 @@ export const search = [
       return {
         code: 0,
         msg: "success",
-        data: getSearchResults(page, 8),
+        data: getSearchResults(page, 8, query),
       };
     },
   },

@@ -1,6 +1,7 @@
 import Mock from "mockjs";
 
-const getCollectionRecipes = (page, pageSize = 8) => {
+export const getCollectionRecipes = (page, pageSize = 8) => {
+
   return Array.from({ length: pageSize }, (_, i) => ({
     id: `${page}-${i}`, // 作为索引的id
     title: Mock.Random.ctitle(4, 8),

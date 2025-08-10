@@ -1,6 +1,6 @@
 import Mock from "mockjs";
 
-const getRecipeDetail = (recipeId) => ({
+export const getRecipeDetail = (recipeId) => ({
   id: recipeId,
   title: Mock.Random.ctitle(4, 8),
   image: Mock.Random.image("400x400", Mock.Random.color(), "#fff", "img"),
@@ -32,7 +32,7 @@ const getRecipeDetail = (recipeId) => ({
   ),
 });
 
-const getComments = (recipeId, page, pageSize = 8) => {
+export const getComments = (recipeId, page, pageSize = 8) => {
   return Array.from({ length: pageSize }, (_, index) => ({
     id: `${recipeId}-${page}-${index}`,
     user: { name: Mock.Random.cname(), avatar: Mock.Random.image("120x120", Mock.Random.color(), "#fff", "头像") },
